@@ -2,9 +2,7 @@ package com.projectfarrel.infokosadmin.network
 
 import com.projectfarrel.infokosadmin.model.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -16,4 +14,7 @@ interface ApiInterface {
 
     @POST("datakos")
     fun addDataKos(@Body request : DataKos) :Call<ResponseDataKos>
+
+    @DELETE("datakos/{id}")
+    fun deleteDataKos(@Path("id")id : Int): Call<ResponseDataKosItem>
 }

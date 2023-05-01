@@ -16,10 +16,12 @@ import javax.inject.Inject
 class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewModel() {
     lateinit var ldDataKos : MutableLiveData<List<ResponseDataKosItem>>
     lateinit var postLdDataKos : MutableLiveData<ResponseDataKos?>
+    lateinit var deleteDataKos : MutableLiveData<ResponseDataKosItem?>
 
     init {
         ldDataKos = MutableLiveData()
         postLdDataKos = MutableLiveData()
+        deleteDataKos = MutableLiveData()
     }
 
     fun getDataKos():MutableLiveData<List<ResponseDataKosItem>>{
@@ -27,6 +29,9 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     }
     fun postDataKos():MutableLiveData<ResponseDataKos?>{
         return postLdDataKos
+    }
+    fun getDelDataKos(): MutableLiveData<ResponseDataKosItem?>{
+        return deleteDataKos
     }
 
     fun callApiDataKos(){
@@ -72,6 +77,27 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
                 override fun onFailure(call: Call<ResponseDataKos>, t: Throwable) {
                     postLdDataKos.postValue(null)
+                }
+
+            })
+    }
+
+    fun callDeleteData(id : Int){
+        api.deleteDataKos(id)
+            .enqueue(object : Callback<ResponseDataKosItem>{
+                override fun onResponse(
+                    call: Call<ResponseDataKosItem>,
+                    response: Response<ResponseDataKosItem>
+                ) {
+                    if (response.isSuccessful){
+                        deleteDataKos.postValue(response.body())
+                    }else{
+                        deleteDataKos.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
+                    deleteDataKos.postValue(null)
                 }
 
             })
