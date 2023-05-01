@@ -17,11 +17,13 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     lateinit var ldDataKos : MutableLiveData<List<ResponseDataKosItem>>
     lateinit var postLdDataKos : MutableLiveData<ResponseDataKos?>
     lateinit var deleteDataKos : MutableLiveData<ResponseDataKosItem?>
+    lateinit var editLdDataKos : MutableLiveData<ResponseDataKosItem?>
 
     init {
         ldDataKos = MutableLiveData()
         postLdDataKos = MutableLiveData()
         deleteDataKos = MutableLiveData()
+        editLdDataKos = MutableLiveData()
     }
 
     fun getDataKos():MutableLiveData<List<ResponseDataKosItem>>{
@@ -32,6 +34,9 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     }
     fun getDelDataKos(): MutableLiveData<ResponseDataKosItem?>{
         return deleteDataKos
+    }
+    fun getEditData():MutableLiveData<ResponseDataKosItem?>{
+        return editLdDataKos
     }
 
     fun callApiDataKos(){
@@ -98,6 +103,34 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
                 override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
                     deleteDataKos.postValue(null)
+                }
+
+            })
+    }
+
+    fun callEditData(id: Int,
+                     alamat: String,
+                     fotoDua: String,
+                     fotoKos: String,
+                     fotoSatu: String,
+                     fotoTiga: String,
+                     namaKos: String,
+                     noHp: String){
+        api.editDataKos(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp))
+            .enqueue(object : Callback<ResponseDataKosItem>{
+                override fun onResponse(
+                    call: Call<ResponseDataKosItem>,
+                    response: Response<ResponseDataKosItem>
+                ) {
+                    if (response.isSuccessful){
+                        editLdDataKos.postValue(response.body())
+                    }else{
+                        editLdDataKos.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
+                    editLdDataKos.postValue(null)
                 }
 
             })

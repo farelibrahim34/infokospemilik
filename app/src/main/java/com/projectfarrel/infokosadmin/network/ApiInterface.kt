@@ -17,4 +17,8 @@ interface ApiInterface {
 
     @DELETE("datakos/{id}")
     fun deleteDataKos(@Path("id")id : Int): Call<ResponseDataKosItem>
+
+    @PUT("datakos/{id}")
+    fun editDataKos(@Path("id") id: Int, @Body request : DataKos): Call<ResponseDataKosItem>
+
 }

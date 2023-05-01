@@ -241,10 +241,12 @@
     <TextView
         android:id="@+id/textViewAdd"
         android:layout_width="wrap_content"
+        android:textColor="@color/warna_primary_font"
+        android:fontFamily="@font/poppins_medium"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Tambah Data Kos"
-        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
