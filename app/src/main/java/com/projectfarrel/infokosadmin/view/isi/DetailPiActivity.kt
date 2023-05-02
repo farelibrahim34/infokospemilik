@@ -61,6 +61,7 @@ class DetailPiActivity : AppCompatActivity() {
 
         binding.viewPagerHomeDetail.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
+
                 selectedDot(position)
                 super.onPageSelected(position)
             }
