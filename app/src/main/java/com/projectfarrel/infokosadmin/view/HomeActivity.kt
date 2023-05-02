@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.projectfarrel.infokosadmin.R
 import com.projectfarrel.infokosadmin.adapter.AdapterDataKos
+import com.projectfarrel.infokosadmin.adapter.AdapterDataKosPi
 import com.projectfarrel.infokosadmin.adapter.ViewPagerFragmentAdapter
 import com.projectfarrel.infokosadmin.databinding.ActivityHomeBinding
 import com.projectfarrel.infokosadmin.view.isi.AddActivity
@@ -41,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
         }
         dataKos()
         bannerHome()
+        dataKosPi()
 
     }
     fun dataKos(){
@@ -54,6 +56,16 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         viewModel.callApiDataKos()
+    }
+    fun dataKosPi(){
+        viewModel.getDataKosPi().observe(this){
+            if (it != null){
+                binding.rvPutri.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+                val adapter = AdapterDataKosPi(it)
+                binding.rvPutri.adapter = adapter
+            }
+        }
+        viewModel.callApiDataKosPi()
     }
     fun bannerHome(){
         castView()

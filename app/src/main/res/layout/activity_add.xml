@@ -8,15 +8,26 @@
     tools:context=".view.isi.AddActivity">
 
     <Button
+        android:id="@+id/btnAddDataPutri"
+        style="@style/firstbutton"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FD8484"
+        android:layout_marginEnd="24dp"
+        android:text="Tambah Kos Putri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+
+    <Button
         android:id="@+id/btnAddData"
         style="@style/firstbutton"
-        android:layout_width="match_parent"
+        android:backgroundTint="#43BDF6"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:text="Tambah Data"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Tambah Kos Putra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 

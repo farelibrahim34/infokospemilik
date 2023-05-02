@@ -19,11 +19,21 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     lateinit var deleteDataKos : MutableLiveData<ResponseDataKosItem?>
     lateinit var editLdDataKos : MutableLiveData<ResponseDataKosItem?>
 
+    lateinit var ldDataKosPi : MutableLiveData<List<ResponseDataKosItem>>
+    lateinit var postLdDataKosPi :MutableLiveData<ResponseDataKos?>
+    lateinit var deleteDataKosPi : MutableLiveData<ResponseDataKosItem?>
+    lateinit var editLdDataKosPi :MutableLiveData<ResponseDataKosItem?>
+
     init {
         ldDataKos = MutableLiveData()
         postLdDataKos = MutableLiveData()
         deleteDataKos = MutableLiveData()
         editLdDataKos = MutableLiveData()
+
+        ldDataKosPi = MutableLiveData()
+        postLdDataKosPi = MutableLiveData()
+        deleteDataKosPi = MutableLiveData()
+        editLdDataKosPi = MutableLiveData()
     }
 
     fun getDataKos():MutableLiveData<List<ResponseDataKosItem>>{
@@ -37,6 +47,20 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     }
     fun getEditData():MutableLiveData<ResponseDataKosItem?>{
         return editLdDataKos
+    }
+
+
+    fun getDataKosPi(): MutableLiveData<List<ResponseDataKosItem>>{
+        return ldDataKosPi
+    }
+    fun getPostDataKosPi(): MutableLiveData<ResponseDataKos?> {
+        return postLdDataKosPi
+    }
+    fun getDelDataKosPi():MutableLiveData<ResponseDataKosItem?>{
+        return deleteDataKosPi
+    }
+    fun getEditDataKosPi(): MutableLiveData<ResponseDataKosItem?>{
+        return editLdDataKosPi
     }
 
     fun callApiDataKos(){
@@ -55,6 +79,26 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
                 override fun onFailure(call: Call<List<ResponseDataKosItem>>, t: Throwable) {
                     ldDataKos.postValue(null)
+                }
+
+            })
+    }
+    fun callApiDataKosPi(){
+        api.getAllDataKosPutri()
+            .enqueue(object  : Callback<List<ResponseDataKosItem>>{
+                override fun onResponse(
+                    call: Call<List<ResponseDataKosItem>>,
+                    response: Response<List<ResponseDataKosItem>>
+                ) {
+                    if (response.isSuccessful){
+                        ldDataKosPi.postValue(response.body())
+                    }else{
+                        ldDataKosPi.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<ResponseDataKosItem>>, t: Throwable) {
+                    ldDataKosPi.postValue(null)
                 }
 
             })
@@ -86,6 +130,33 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
             })
     }
+    fun callPostDataKosPi(alamat: String,
+                          fotoDua: String,
+                          fotoKos: String,
+                          fotoSatu: String,
+                          fotoTiga: String,
+                          namaKos: String,
+                          noHp: String){
+        api.addDataKosPutri(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp))
+            .enqueue(object : Callback<ResponseDataKos>{
+                override fun onResponse(
+                    call: Call<ResponseDataKos>,
+                    response: Response<ResponseDataKos>
+                ) {
+                    if (response.isSuccessful){
+                        postLdDataKosPi.postValue(response.body())
+                    }else{
+                        postLdDataKosPi.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDataKos>, t: Throwable) {
+                    postLdDataKosPi.postValue(null)
+                }
+
+            })
+
+    }
 
     fun callDeleteData(id : Int){
         api.deleteDataKos(id)
@@ -103,6 +174,26 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
                 override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
                     deleteDataKos.postValue(null)
+                }
+
+            })
+    }
+    fun callDeleteDataPi(id :Int){
+        api.deleteDataKosPutri(id)
+            .enqueue(object : Callback<ResponseDataKosItem>{
+                override fun onResponse(
+                    call: Call<ResponseDataKosItem>,
+                    response: Response<ResponseDataKosItem>
+                ) {
+                    if (response.isSuccessful){
+                        deleteDataKosPi.postValue(response.body())
+                    }else{
+                        deleteDataKosPi.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
+                    deleteDataKosPi.postValue(null)
                 }
 
             })
@@ -135,6 +226,36 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
 
             })
     }
+    fun callEditDataPi(id: Int,
+                       alamat: String,
+                       fotoDua: String,
+                       fotoKos: String,
+                       fotoSatu: String,
+                       fotoTiga: String,
+                       namaKos: String,
+                       noHp: String){
+        api.editDataKosPutri(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp))
+            .enqueue(object : Callback<ResponseDataKosItem>{
+                override fun onResponse(
+                    call: Call<ResponseDataKosItem>,
+                    response: Response<ResponseDataKosItem>
+                ) {
+                    if (response.isSuccessful){
+                        editLdDataKosPi.postValue(response.body())
+                    }else{
+                        editLdDataKosPi.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseDataKosItem>, t: Throwable) {
+                    editLdDataKosPi.postValue(null)
+                }
+            })
+
+
+    }
+
+
 
 
 }
