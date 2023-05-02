@@ -114,9 +114,9 @@ class DetailActivity : AppCompatActivity() {
     private fun selectedDot(position: Int) {
         for (i in 0 until list.size){
             if (i == position)
-                dots[i].setTextColor(ContextCompat.getColor(this, R.color.warna_background_splash))
+                dots[i].setTextColor(ContextCompat.getColor(this, R.color.warna_button))
             else
-                dots[i].setTextColor(ContextCompat.getColor(this, R.color.warna_background))
+                dots[i].setTextColor(ContextCompat.getColor(this, R.color.warna_background_splash))
         }
 
     }
