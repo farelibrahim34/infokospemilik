@@ -11,6 +11,7 @@ import com.projectfarrel.infokosadmin.R
 import com.projectfarrel.infokosadmin.databinding.ActivityLoginBinding
 import com.projectfarrel.infokosadmin.datastore.DataStoreLogin
 import com.projectfarrel.infokosadmin.utils.LoginUtil
+import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.view.RegisterActivity
 import com.projectfarrel.infokosadmin.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
 
         dataLogin = DataStoreLogin(this)
 
@@ -48,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
 
             }else if (userName == username && Password == password){
-                startActivity(Intent(this,MainActivity::class.java))
+                startActivity(Intent(this,HomeActivity::class.java))
                 Toast.makeText(this,"Anda Berhasil Login", Toast.LENGTH_SHORT).show()
 
             }else if (userName != username || Password != password){
@@ -62,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
+
 
     }
     private fun login(){

@@ -4,7 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -27,6 +30,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit private var adapterSlide: ImageSliderAdapter
     private val list = ArrayList<ImageData>()
     lateinit var dots : ArrayList<TextView>
+
+    private lateinit var  handler: Handler
+    private lateinit var runnable: Runnable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,6 +113,20 @@ class DetailActivity : AppCompatActivity() {
             }
 
         }
+        handler = Handler(Looper.getMainLooper())
+        runnable = object : Runnable{
+            var index = 0
+            override fun run() {
+                if (index == list.size)
+                    index = 0
+                Log.e("Runnable, ","$index")
+                binding.viewPagerHomeDetail.setCurrentItem(index)
+                index++
+                handler.postDelayed(this,3000)
+            }
+
+        }
+        handler.post(runnable)
 
 
 
@@ -129,5 +149,14 @@ class DetailActivity : AppCompatActivity() {
             dots[i].textSize = 20f
             binding.dots2.addView(dots[i])
         }
+    }
+    override fun onStop() {
+        super.onStop()
+        handler.removeCallbacks(runnable)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        handler.post(runnable)
     }
 }

@@ -48,7 +48,7 @@ class DetailPiActivity : AppCompatActivity() {
                 Log.e("Runnable, ","$index")
                 binding.viewPagerHomeDetail.setCurrentItem(index)
                 index++
-                handler.postDelayed(this,2000)
+                handler.postDelayed(this,3000)
             }
 
         }

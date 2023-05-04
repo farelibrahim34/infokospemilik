@@ -15,14 +15,11 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/logokost"
+        android:label="Info Kos Admin"
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoKosAdmin"
         tools:targetApi="31">
-        <activity
-            android:name=".view.isi.AddPiActivity"
-            android:exported="false" />
         <activity
             android:name=".view.isi.EditPiActivity"
             android:exported="false" />

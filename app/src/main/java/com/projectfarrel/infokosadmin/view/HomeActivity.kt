@@ -4,6 +4,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -29,6 +32,9 @@ class HomeActivity : AppCompatActivity() {
     private var fragmentList = ArrayList<Fragment>()
     private lateinit var viewPager: ViewPager2
     private lateinit var indicator: CircleIndicator3
+
+    private lateinit var  handler: Handler
+    private lateinit var runnable: Runnable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +62,21 @@ class HomeActivity : AppCompatActivity() {
         dataKos()
         bannerHome()
         dataKosPi()
+
+        handler = Handler(Looper.getMainLooper())
+        runnable = object : Runnable{
+            var index = 0
+            override fun run() {
+                if (index == fragmentList.size)
+                    index = 0
+                Log.e("Runnable, ","$index")
+                binding.viewPagerHome.setCurrentItem(index)
+                index++
+                handler.postDelayed(this,3000)
+            }
+
+        }
+        handler.post(runnable)
 
     }
     fun dataKos(){
