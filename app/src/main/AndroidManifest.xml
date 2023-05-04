@@ -21,6 +21,12 @@
         android:theme="@style/Theme.InfoKosAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".view.isi.AddPiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.isi.EditPiActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.isi.DetailPiActivity"
             android:exported="false" />
         <activity

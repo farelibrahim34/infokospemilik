@@ -4,7 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -26,12 +29,33 @@ class DetailPiActivity : AppCompatActivity() {
     private val list = ArrayList<ImageData>()
     lateinit var dots : ArrayList<TextView>
 
+    private lateinit var  handler: Handler
+    private lateinit var runnable: Runnable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailPiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setDetail()
+
+        handler = Handler(Looper.getMainLooper())
+        runnable = object : Runnable{
+            var index = 0
+            override fun run() {
+                if (index == list.size)
+                    index = 0
+                Log.e("Runnable, ","$index")
+                binding.viewPagerHomeDetail.setCurrentItem(index)
+                index++
+                handler.postDelayed(this,2000)
+            }
+
+        }
+        handler.post(runnable)
+
     }
+
     private fun setDetail(){
         val nama = intent.getStringExtra("nama")
         val fotokos = intent.getStringExtra("fotokos")
@@ -80,9 +104,10 @@ class DetailPiActivity : AppCompatActivity() {
 
         }
         binding.btnEditData.setOnClickListener {
-            val intent = Intent(this, EditActivity::class.java)
+            val intent = Intent(this, EditPiActivity::class.java)
             intent.putExtra("idData",kirimId)
             intent.putExtra("fotokos",fotokos)
+            intent.putExtra("nama",nama)
             intent.putExtra("alamat",alamat)
             intent.putExtra("foto1",foto1)
             intent.putExtra("foto2",foto2)
@@ -124,5 +149,15 @@ class DetailPiActivity : AppCompatActivity() {
             dots[i].textSize = 20f
             binding.dots2.addView(dots[i])
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        handler.removeCallbacks(runnable)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        handler.post(runnable)
     }
 }

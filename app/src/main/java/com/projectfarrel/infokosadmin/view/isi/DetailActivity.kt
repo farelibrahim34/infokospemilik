@@ -85,6 +85,7 @@ class DetailActivity : AppCompatActivity() {
         binding.btnEditData.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
             intent.putExtra("idData",kirimId)
+            intent.putExtra("nama",nama)
             intent.putExtra("fotokos",fotokos)
             intent.putExtra("alamat",alamat)
             intent.putExtra("foto1",foto1)

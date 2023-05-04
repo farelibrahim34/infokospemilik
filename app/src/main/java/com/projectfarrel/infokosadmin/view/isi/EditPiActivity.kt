@@ -6,20 +6,20 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.ActivityDetailBinding
 import com.projectfarrel.infokosadmin.databinding.ActivityEditBinding
+import com.projectfarrel.infokosadmin.databinding.ActivityEditPiBinding
 import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
-class EditActivity : AppCompatActivity() {
-    lateinit var binding : ActivityEditBinding
+class EditPiActivity : AppCompatActivity() {
+    lateinit var binding : ActivityEditPiBinding
     var id by Delegates.notNull<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditBinding.inflate(layoutInflater)
+        binding = ActivityEditPiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val nama = intent.getStringExtra("nama")
@@ -31,38 +31,35 @@ class EditActivity : AppCompatActivity() {
         val nohp = intent.getStringExtra("nohp")
         id = intent.getStringExtra("idData")!!.toInt()
 
-        binding.etAddAlamatE.setText(alamat)
-        binding.etAddNamaKosE.setText(nama)
-        binding.etAddNoHpE.setText(nohp)
-        binding.etLinkFotoE.setText(fotokos)
-        binding.etLinkFotoSatuE.setText(foto1)
-        binding.etLinkFotoDuaE.setText(foto2)
-        binding.etLinkFotoTigaE.setText(foto3)
+        binding.etAddAlamatPi.setText(alamat)
+        binding.etAddNamaKosPi.setText(nama)
+        binding.etAddNoHpPi.setText(nohp)
+        binding.etLinkFotoPi.setText(fotokos)
+        binding.etLinkFotoSatuPi.setText(foto1)
+        binding.etLinkFotoDuaPi.setText(foto2)
+        binding.etLinkFotoTigaPi.setText(foto3)
 
-        binding.btnEdit.setOnClickListener{
+        binding.btnEditPi.setOnClickListener{
             editData()
 
             Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
 
         }
-
     }
-
     private fun editData(){
-        val namaKos = binding.etAddNamaKosE.text.toString()
-        val alamat = binding.etAddAlamatE.text.toString()
-        val nomerHp = binding.etAddNoHpE.text.toString()
-        val linkFRmh = binding.etLinkFotoE.text.toString()
-        val linkSatu = binding.etLinkFotoSatuE.text.toString()
-        val linkDua = binding.etLinkFotoDuaE.text.toString()
-        val linkTiga = binding.etLinkFotoTigaE.text.toString()
+        val namaKos = binding.etAddNamaKosPi.text.toString()
+        val alamat = binding.etAddAlamatPi.text.toString()
+        val nomerHp = binding.etAddNoHpPi.text.toString()
+        val linkFRmh = binding.etLinkFotoPi.text.toString()
+        val linkSatu = binding.etLinkFotoSatuPi.text.toString()
+        val linkDua = binding.etLinkFotoDuaPi.text.toString()
+        val linkTiga = binding.etLinkFotoTigaPi.text.toString()
 
 
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callEditData(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp)
-        viewModel.getEditData().observe(this){
+        viewModel.callEditDataPi(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp)
+        viewModel.getEditDataKosPi().observe(this){
             if (it != null){
-                Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
