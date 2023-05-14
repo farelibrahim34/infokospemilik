@@ -47,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="17sp"
         android:text="Alamat"
         app:layout_constraintStart_toStartOf="parent"
         android:fontFamily="@font/poppins_semibold"
@@ -66,8 +67,17 @@
         <TextView
             android:id="@+id/txtAlamat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TextView" />
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/baseline_location_on_24" />
     </androidx.cardview.widget.CardView>
 
     <Button

@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
-        android:text="INFO KOS SEKITAR AMIKOM PURWOKERTO"
+        android:text="INFO KOS AREA AMIKOM PURWOKERTO"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"

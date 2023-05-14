@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     android:background="@color/warna_background"
     tools:context=".view.isi.EditPiActivity">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout70"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_bg"
+        android:textColor="@color/warna_primary_font"
+        android:textColorHint="@color/warna_primary_font"
+        app:boxStrokeColor="@color/warna_background"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/warna_primary_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
+        app:shapeAppearanceOverlay="@style/Button">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLinkMaps"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Masukkan Link Google Maps"
+            android:inputType="text"
+            android:textColor="@color/warna_primary_font"
+            android:textColorHint="@color/warna_primary_font"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:boxStrokeWidth="0dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnEditPi"
@@ -13,13 +45,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="Edit Data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout70" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
@@ -27,6 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -41,7 +75,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLinkFotoTigaPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Link Foto Fasilitas"
             android:inputType="text"
@@ -58,6 +92,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -72,7 +108,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLinkFotoDuaPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Link Foto Fasilitas"
             android:inputType="text"
@@ -89,6 +125,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -103,7 +141,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLinkFotoSatuPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Link Foto Fasilitas"
             android:inputType="text"
@@ -120,6 +158,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -134,7 +174,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLinkFotoPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Link Foto Rumah"
             android:inputType="text"
@@ -151,6 +191,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -165,7 +207,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAddNoHpPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Nomer HP"
             android:inputType="text"
@@ -182,6 +224,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -196,7 +240,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAddAlamatPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Alamat"
             android:inputType="text"
@@ -213,7 +257,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_bg"
         android:textColor="@color/warna_primary_font"
         android:textColorHint="@color/warna_primary_font"
@@ -228,7 +274,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAddNamaKosPi"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="Nama Kos"
             android:inputType="text"

@@ -9,5 +9,6 @@ data class ResponseDataKosItem(
     val fotoTiga: String,
     val id: String,
     val namaKos: String,
-    val noHp: String
+    val noHp: String,
+    val linkMaps: String
 )

@@ -66,6 +66,7 @@ class DetailPiActivity : AppCompatActivity() {
         val nohp = intent.getStringExtra("nohp")
         val id = intent.getStringExtra("id")!!.toInt()
         val kirimId = intent.getStringExtra("id")
+        val linkMaps = intent.getStringExtra("linkMaps")
 
 
 
@@ -97,6 +98,10 @@ class DetailPiActivity : AppCompatActivity() {
         binding.btnNomorHp.setText(nohp)
         binding.viewPagerHomeDetail
 
+        binding.imageView2.setOnClickListener {
+            val link = Intent(Intent.ACTION_VIEW, Uri.parse(linkMaps))
+            startActivity(link)
+        }
 
         binding.btnNomorHp.setOnClickListener {
             val link = Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/ "+nohp))
@@ -113,6 +118,7 @@ class DetailPiActivity : AppCompatActivity() {
             intent.putExtra("foto2",foto2)
             intent.putExtra("foto3",foto3)
             intent.putExtra("nohp",nohp)
+            intent.putExtra("linkMaps",linkMaps)
             startActivity(intent)
         }
 

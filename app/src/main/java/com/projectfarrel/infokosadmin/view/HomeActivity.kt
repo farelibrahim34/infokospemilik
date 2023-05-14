@@ -60,8 +60,9 @@ class HomeActivity : AppCompatActivity() {
 //                .show()
         }
         dataKos()
-        bannerHome()
         dataKosPi()
+        bannerHome()
+//        getAllData()
 
         handler = Handler(Looper.getMainLooper())
         runnable = object : Runnable{
@@ -133,4 +134,46 @@ class HomeActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        dataKos()
+        dataKosPi()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dataKos()
+        dataKosPi()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        dataKos()
+        dataKosPi()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        dataKos()
+        dataKosPi()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        dataKos()
+        dataKosPi()
+    }
+//    private fun getAllData(){
+//        val swipeRefresh = binding.swipeRefresh
+//        swipeRefresh.setOnRefreshListener {
+//            if(swipeRefresh.isRefreshing){
+//                dataKos()
+//                dataKosPi()
+//                swipeRefresh.isRefreshing = false
+//            }
+//        }
+//
+//    }
+
 }

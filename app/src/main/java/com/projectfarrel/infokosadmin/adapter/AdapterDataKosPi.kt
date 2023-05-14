@@ -36,6 +36,7 @@ class AdapterDataKosPi(private var listData:List<ResponseDataKosItem>): Recycler
             detail.putExtra("foto2",listData[position].fotoDua)
             detail.putExtra("foto3",listData[position].fotoTiga)
             detail.putExtra("nohp",listData[position].noHp)
+            detail.putExtra("linkMaps",listData[position].linkMaps)
             it.context.startActivity(detail)
         }
 

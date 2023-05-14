@@ -29,6 +29,7 @@ class EditPiActivity : AppCompatActivity() {
         val foto2 = intent.getStringExtra("foto2")
         val foto3 = intent.getStringExtra("foto3")
         val nohp = intent.getStringExtra("nohp")
+        val linkMaps = intent.getStringExtra("linkMaps")
         id = intent.getStringExtra("idData")!!.toInt()
 
         binding.etAddAlamatPi.setText(alamat)
@@ -38,6 +39,7 @@ class EditPiActivity : AppCompatActivity() {
         binding.etLinkFotoSatuPi.setText(foto1)
         binding.etLinkFotoDuaPi.setText(foto2)
         binding.etLinkFotoTigaPi.setText(foto3)
+        binding.etLinkMaps.setText(linkMaps)
 
         binding.btnEditPi.setOnClickListener{
             editData()
@@ -53,11 +55,12 @@ class EditPiActivity : AppCompatActivity() {
         val linkFRmh = binding.etLinkFotoPi.text.toString()
         val linkSatu = binding.etLinkFotoSatuPi.text.toString()
         val linkDua = binding.etLinkFotoDuaPi.text.toString()
+        val linkMaps = binding.etLinkMaps.text.toString()
         val linkTiga = binding.etLinkFotoTigaPi.text.toString()
 
 
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callEditDataPi(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp)
+        viewModel.callEditDataPi(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
         viewModel.getEditDataKosPi().observe(this){
             if (it != null){
                 val intent = Intent(this, HomeActivity::class.java)

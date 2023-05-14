@@ -29,6 +29,7 @@ class EditActivity : AppCompatActivity() {
         val foto2 = intent.getStringExtra("foto2")
         val foto3 = intent.getStringExtra("foto3")
         val nohp = intent.getStringExtra("nohp")
+        val linkMaps = intent.getStringExtra("linkMaps")
         id = intent.getStringExtra("idData")!!.toInt()
 
         binding.etAddAlamatE.setText(alamat)
@@ -38,6 +39,7 @@ class EditActivity : AppCompatActivity() {
         binding.etLinkFotoSatuE.setText(foto1)
         binding.etLinkFotoDuaE.setText(foto2)
         binding.etLinkFotoTigaE.setText(foto3)
+        binding.etLinkMaps.setText(linkMaps)
 
         binding.btnEdit.setOnClickListener{
             editData()
@@ -56,10 +58,11 @@ class EditActivity : AppCompatActivity() {
         val linkSatu = binding.etLinkFotoSatuE.text.toString()
         val linkDua = binding.etLinkFotoDuaE.text.toString()
         val linkTiga = binding.etLinkFotoTigaE.text.toString()
+        val linkMaps = binding.etLinkMaps.text.toString()
 
 
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callEditData(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp)
+        viewModel.callEditData(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
         viewModel.getEditData().observe(this){
             if (it != null){
                 Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
