@@ -1,9 +1,11 @@
 package com.projectfarrel.infokosadmin.auth
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.projectfarrel.infokosadmin.MainActivity
@@ -66,6 +68,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+
     }
     private fun login(){
         binding.btnLogin.setOnClickListener {
@@ -84,6 +87,21 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+    }
+    override fun onBackPressed() {
+
+        AlertDialog.Builder(this)
+            .setTitle("Tutup Aplikasi")
+            .setMessage("Yakin tutup dari aplikasi?")
+            .setPositiveButton("Ya"){ dialogInterface: DialogInterface, i: Int ->
+                finishAffinity()
+            }
+            .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()
+            }
+            .show()
+
+
     }
 
 }

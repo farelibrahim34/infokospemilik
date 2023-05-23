@@ -22,6 +22,10 @@ class EditPiActivity : AppCompatActivity() {
         binding = ActivityEditPiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.ivBackDetail.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+
         val nama = intent.getStringExtra("nama")
         val fotokos = intent.getStringExtra("fotokos")
         val alamat = intent.getStringExtra("alamat")

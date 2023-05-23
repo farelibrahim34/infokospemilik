@@ -16,13 +16,17 @@ import androidx.viewpager2.widget.ViewPager2
 import com.projectfarrel.infokosadmin.adapter.AdapterDataKos
 import com.projectfarrel.infokosadmin.adapter.AdapterDataKosPi
 import com.projectfarrel.infokosadmin.adapter.ViewPagerFragmentAdapter
+import com.projectfarrel.infokosadmin.auth.LoginActivity
 import com.projectfarrel.infokosadmin.databinding.ActivityHomeBinding
+import com.projectfarrel.infokosadmin.datastore.DataStoreLogin
 import com.projectfarrel.infokosadmin.view.isi.AddActivity
 import com.projectfarrel.infokosadmin.view.wrapper.FragmentVpHomeOne
 import com.projectfarrel.infokosadmin.view.wrapper.FragmentVpHomeThree
 import com.projectfarrel.infokosadmin.view.wrapper.FragmentVpHomeTwo
 import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import me.relex.circleindicator.CircleIndicator3
 
 @AndroidEntryPoint
@@ -31,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel : ViewModelDataKos
     private var fragmentList = ArrayList<Fragment>()
     private lateinit var viewPager: ViewPager2
+    private lateinit var dataLogin : DataStoreLogin
     private lateinit var indicator: CircleIndicator3
 
     private lateinit var  handler: Handler
@@ -58,6 +63,13 @@ class HomeActivity : AppCompatActivity() {
 //                    startActivity(intent)
 //                }
 //                .show()
+        }
+        dataLogin = DataStoreLogin(this)
+        binding.btnLogout.setOnClickListener {
+            GlobalScope.launch {
+                startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                finish()
+            }
         }
         dataKos()
         dataKosPi()

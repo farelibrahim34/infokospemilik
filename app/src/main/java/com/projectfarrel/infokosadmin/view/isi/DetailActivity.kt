@@ -40,6 +40,9 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setDetail()
+        binding.ivBackDetail.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
     }
     private fun setDetail(){

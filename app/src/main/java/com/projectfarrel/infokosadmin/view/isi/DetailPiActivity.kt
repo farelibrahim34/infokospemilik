@@ -38,6 +38,9 @@ class DetailPiActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setDetail()
+        binding.ivBackDetail.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
         handler = Handler(Looper.getMainLooper())
         runnable = object : Runnable{

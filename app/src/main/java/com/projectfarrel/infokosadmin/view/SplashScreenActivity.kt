@@ -26,16 +26,20 @@ class SplashScreenActivity : AppCompatActivity() {
             usernama = it.toString()
         })
 
+//        Handler().postDelayed({
+//            if (usernama.isEmpty()){
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                finish()
+//            }else{
+//                startActivity(Intent(this, HomeActivity::class.java))
+//                finish()
+//            }
+//
+//
+//        },7000)
         Handler().postDelayed({
-            if (usernama.isEmpty()){
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }else{
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
-            }
-
-
-        },8000)
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        },7000)
     }
 }

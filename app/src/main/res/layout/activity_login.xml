@@ -116,44 +116,30 @@
             app:boxStrokeWidth="0dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/swLanguange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:checked="true"
-        android:text="inggris / indonesia"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/warna_secondary_font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passworInputLayout"
-        app:useMaterialThemeColors="true" />
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/firstbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/firstbutton"
-        android:fontFamily="@font/poppins_medium"
         android:layout_marginVertical="10dp"
+        android:fontFamily="@font/poppins_medium"
         android:paddingVertical="10dp"
         android:text="Masuk"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swLanguange" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRegister"
+        style="@style/secondbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/secondbutton"
         android:fontFamily="@font/poppins_medium"
         android:paddingVertical="10dp"
         android:text="Buat Akun"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
