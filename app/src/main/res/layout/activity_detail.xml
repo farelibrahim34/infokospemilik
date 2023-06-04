@@ -139,18 +139,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <Button
-        android:id="@+id/btnHapus"
-        style="@style/firstbutton"
-        android:layout_width="170dp"
-        android:backgroundTint="#F86E6E"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Hapus Data"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNomorHp" />
-
-    <Button
         android:id="@+id/btnEditData"
         style="@style/firstbutton"
         android:layout_width="170dp"
@@ -160,6 +148,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Edit Data"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnNomorHp"
         app:layout_constraintTop_toBottomOf="@+id/btnNomorHp" />
 
 

@@ -127,18 +127,18 @@ class DetailPiActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnHapus.setOnClickListener {
-            val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-            viewModel.callDeleteDataPi(id)
-            viewModel.getDelDataKosPi().observe(this){
-                if (it != null){
-                    Toast.makeText(this, "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-
-        }
+//        binding.btnHapus.setOnClickListener {
+//            val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
+//            viewModel.callDeleteDataPi(id)
+//            viewModel.getDelDataKosPi().observe(this){
+//                if (it != null){
+//                    Toast.makeText(this, "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, HomeActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            }
+//
+//        }
 
 
 
