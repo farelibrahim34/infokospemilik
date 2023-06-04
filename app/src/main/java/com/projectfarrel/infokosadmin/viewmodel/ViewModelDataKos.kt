@@ -111,8 +111,10 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                         fotoTiga: String,
                         namaKos: String,
                         noHp: String,
-                        linkMaps: String){
-        api.addDataKos(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps))
+                        linkMaps: String,
+                        rating: String,
+                        desc: String){
+        api.addDataKos(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKos>{
                 override fun onResponse(
                     call: Call<ResponseDataKos>,
@@ -138,8 +140,10 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                           fotoTiga: String,
                           namaKos: String,
                           noHp: String,
-                          linkMaps: String){
-        api.addDataKosPutri(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps))
+                          linkMaps: String,
+                          rating: String,
+                          desc: String){
+        api.addDataKosPutri(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKos>{
                 override fun onResponse(
                     call: Call<ResponseDataKos>,
@@ -209,8 +213,10 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                      fotoTiga: String,
                      namaKos: String,
                      noHp: String,
-                     linkMaps: String){
-        api.editDataKos(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps))
+                     linkMaps: String,
+                     rating: String,
+                     desc: String){
+        api.editDataKos(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,
@@ -237,8 +243,10 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                        fotoTiga: String,
                        namaKos: String,
                        noHp: String,
-                       linkMaps: String){
-        api.editDataKosPutri(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps))
+                       linkMaps: String,
+                       rating: String,
+                       desc: String){
+        api.editDataKosPutri(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,

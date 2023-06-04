@@ -24,6 +24,7 @@ class AdapterDataKosPi(private var listData:List<ResponseDataKosItem>): Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.txtNamaKos.text = listData[position].namaKos
+        holder.binding.txtRate.text = listData[position].rate
         Glide.with(holder.itemView).load(listData[position].fotoKos).fitCenter().into(holder.binding.ivImage)
 
         holder.binding.cardList.setOnClickListener {
@@ -37,6 +38,8 @@ class AdapterDataKosPi(private var listData:List<ResponseDataKosItem>): Recycler
             detail.putExtra("foto3",listData[position].fotoTiga)
             detail.putExtra("nohp",listData[position].noHp)
             detail.putExtra("linkMaps",listData[position].linkMaps)
+            detail.putExtra("desc",listData[position].desc)
+
             it.context.startActivity(detail)
         }
 

@@ -24,6 +24,7 @@ class AdapterDataKos(private var listData:List<ResponseDataKosItem>): RecyclerVi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.txtNamaKos.text = listData[position].namaKos
         Glide.with(holder.itemView).load(listData[position].fotoKos).fitCenter().into(holder.binding.ivImage)
+        holder.binding.txtRate.text = listData[position].rate
 
         holder.binding.cardList.setOnClickListener {
             val detail = Intent(it.context, DetailActivity::class.java)
@@ -36,6 +37,7 @@ class AdapterDataKos(private var listData:List<ResponseDataKosItem>): RecyclerVi
             detail.putExtra("foto3",listData[position].fotoTiga)
             detail.putExtra("nohp",listData[position].noHp)
             detail.putExtra("linkMaps",listData[position].linkMaps)
+            detail.putExtra("desc",listData[position].desc)
             it.context.startActivity(detail)
         }
 

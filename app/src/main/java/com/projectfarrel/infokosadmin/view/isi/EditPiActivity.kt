@@ -61,10 +61,12 @@ class EditPiActivity : AppCompatActivity() {
         val linkDua = binding.etLinkFotoDuaPi.text.toString()
         val linkMaps = binding.etLinkMaps.text.toString()
         val linkTiga = binding.etLinkFotoTigaPi.text.toString()
+        val rate = binding.etRate.text.toString()
+        val desc = binding.etDesc.text.toString()
 
 
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callEditDataPi(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
+        viewModel.callEditDataPi(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps,rate,desc)
         viewModel.getEditDataKosPi().observe(this){
             if (it != null){
                 val intent = Intent(this, HomeActivity::class.java)

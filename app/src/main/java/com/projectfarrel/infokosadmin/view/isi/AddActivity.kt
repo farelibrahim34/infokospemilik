@@ -30,7 +30,9 @@ class AddActivity : AppCompatActivity() {
             val linkDua = binding.etLinkFotoDua.text.toString()
             val linkTiga = binding.etLinkFotoTiga.text.toString()
             val linkMaps = binding.etLinkMaps.text.toString()
-            addData(alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
+            val rate = binding.etRate.text.toString()
+            val desc = binding.etDesc.text.toString()
+            addData(alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps,rate,desc)
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             Toast.makeText(this,"add data sukses", Toast.LENGTH_SHORT).show()
@@ -44,7 +46,9 @@ class AddActivity : AppCompatActivity() {
             val linkDua = binding.etLinkFotoDua.text.toString()
             val linkTiga = binding.etLinkFotoTiga.text.toString()
             val linkMaps = binding.etLinkMaps.text.toString()
-            addDataPi(alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
+            val rate = binding.etRate.text.toString()
+            val desc = binding.etDesc.text.toString()
+            addDataPi(alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps,rate,desc)
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             Toast.makeText(this,"add data sukses", Toast.LENGTH_SHORT).show()
@@ -61,9 +65,11 @@ class AddActivity : AppCompatActivity() {
                 fotoTiga: String,
                 namaKos: String,
                 noHp: String,
-                linkMaps: String){
+                linkMaps: String,
+                rating: String,
+                desc: String){
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callPostDataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps)
+        viewModel.callPostDataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc)
         viewModel.postDataKos().observe(this,{
             if (it != null){
                 Toast.makeText(this,"add data sukses", Toast.LENGTH_SHORT).show()
@@ -80,9 +86,11 @@ class AddActivity : AppCompatActivity() {
                   fotoTiga: String,
                   namaKos: String,
                   noHp: String,
-                  linkMaps: String){
+                  linkMaps: String,
+                  rating: String,
+                  desc: String){
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callPostDataKosPi(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps)
+        viewModel.callPostDataKosPi(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc)
         viewModel.getPostDataKosPi().observe(this){
             if (it != null){
                 Toast.makeText(this,"add data sukses", Toast.LENGTH_SHORT).show()

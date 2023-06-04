@@ -8,5 +8,7 @@ class DataKos (
     val fotoTiga: String,
     val namaKos: String,
     val noHp: String,
-    val linkMaps: String
+    val linkMaps: String,
+    val rate : String,
+    val desc: String
 )

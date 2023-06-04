@@ -63,10 +63,12 @@ class EditActivity : AppCompatActivity() {
         val linkDua = binding.etLinkFotoDuaE.text.toString()
         val linkTiga = binding.etLinkFotoTigaE.text.toString()
         val linkMaps = binding.etLinkMaps.text.toString()
+        val rate = binding.etRate.text.toString()
+        val desc = binding.etDesc.text.toString()
 
 
         val viewModel = ViewModelProvider(this).get(ViewModelDataKos::class.java)
-        viewModel.callEditData(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps)
+        viewModel.callEditData(id,alamat,linkDua,linkFRmh,linkSatu,linkTiga,namaKos,nomerHp,linkMaps,rate,desc)
         viewModel.getEditData().observe(this){
             if (it != null){
                 Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
