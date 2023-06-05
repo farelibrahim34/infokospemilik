@@ -16,7 +16,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/logokost"
-        android:label="Info Kos Admin"
+        android:label="Info Kos Calo"
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoKosAdmin"
         tools:targetApi="31">

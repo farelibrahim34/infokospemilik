@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/warna_background"
     tools:context=".view.isi.EditActivity">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout1234"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="190dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:layout_marginEnd="8dp"
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:hint="Deskripsi Lainnya"
+            android:hint="Deskripsi"
             android:inputType="text"
             android:textColor="@color/warna_primary_font"
             android:textColorHint="@color/warna_primary_font"
@@ -40,7 +41,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout123"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="190dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:layout_marginStart="8dp"
@@ -59,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:hint="Masukkan Rating"
+            android:hint="Rating"
             android:inputType="text"
             android:textColor="@color/warna_primary_font"
             android:textColorHint="@color/warna_primary_font"
