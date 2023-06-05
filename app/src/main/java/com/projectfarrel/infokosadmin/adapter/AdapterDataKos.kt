@@ -38,6 +38,7 @@ class AdapterDataKos(private var listData:List<ResponseDataKosItem>): RecyclerVi
             detail.putExtra("nohp",listData[position].noHp)
             detail.putExtra("linkMaps",listData[position].linkMaps)
             detail.putExtra("desc",listData[position].desc)
+            detail.putExtra("rate",listData[position].rate)
             it.context.startActivity(detail)
         }
 

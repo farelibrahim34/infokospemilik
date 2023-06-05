@@ -34,6 +34,8 @@ class EditPiActivity : AppCompatActivity() {
         val foto3 = intent.getStringExtra("foto3")
         val nohp = intent.getStringExtra("nohp")
         val linkMaps = intent.getStringExtra("linkMaps")
+        val desc = intent.getStringExtra("desc")
+        val rate = intent.getStringExtra("rate")
         id = intent.getStringExtra("idData")!!.toInt()
 
         binding.etAddAlamatPi.setText(alamat)
@@ -44,6 +46,8 @@ class EditPiActivity : AppCompatActivity() {
         binding.etLinkFotoDuaPi.setText(foto2)
         binding.etLinkFotoTigaPi.setText(foto3)
         binding.etLinkMaps.setText(linkMaps)
+        binding.etDesc.setText(desc)
+        binding.etRate.setText(rate)
 
         binding.btnEditPi.setOnClickListener{
             editData()

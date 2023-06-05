@@ -57,6 +57,7 @@ class DetailActivity : AppCompatActivity() {
         val kirimId = intent.getStringExtra("id")
         val linkMaps = intent.getStringExtra("linkMaps")
         val desc = intent.getStringExtra("desc")
+        val rate = intent.getStringExtra("rate")
 
 
 
@@ -108,6 +109,8 @@ class DetailActivity : AppCompatActivity() {
             intent.putExtra("foto3",foto3)
             intent.putExtra("nohp",nohp)
             intent.putExtra("linkMaps",linkMaps)
+            intent.putExtra("desc",desc)
+            intent.putExtra("rate",rate)
             startActivity(intent)
         }
 
