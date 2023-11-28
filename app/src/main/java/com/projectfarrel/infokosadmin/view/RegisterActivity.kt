@@ -3,9 +3,9 @@ package com.projectfarrel.infokosadmin.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.projectfarrel.infokosadmin.R
+import com.projectfarrel.infokoscalo.R
 import com.projectfarrel.infokosadmin.auth.LoginActivity
-import com.projectfarrel.infokosadmin.databinding.ActivityRegisterBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityRegisterBinding
 import com.projectfarrel.infokosadmin.datastore.DataStoreLogin
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

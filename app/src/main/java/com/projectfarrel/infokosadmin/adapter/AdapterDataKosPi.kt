@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.projectfarrel.infokosadmin.databinding.ItemBinding
+import com.projectfarrel.infokoscalo.databinding.ItemBinding
 import com.projectfarrel.infokosadmin.model.ResponseDataKosItem
 import com.projectfarrel.infokosadmin.view.isi.DetailActivity
 import com.projectfarrel.infokosadmin.view.isi.DetailPiActivity

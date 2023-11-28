@@ -9,16 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.projectfarrel.infokosadmin.MainActivity
-import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.ActivityLoginBinding
+import com.projectfarrel.infokoscalo.R
+import com.projectfarrel.infokoscalo.databinding.ActivityLoginBinding
 import com.projectfarrel.infokosadmin.datastore.DataStoreLogin
 import com.projectfarrel.infokosadmin.utils.LoginUtil
 import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.view.RegisterActivity
 import com.projectfarrel.infokosadmin.viewmodel.AuthViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     private lateinit var dataLogin : DataStoreLogin

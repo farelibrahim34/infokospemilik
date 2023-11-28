@@ -16,15 +16,12 @@ import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.projectfarrel.infokosadmin.R
+import com.projectfarrel.infokoscalo.R
 import com.projectfarrel.infokosadmin.adapter.ImageSliderAdapter
-import com.projectfarrel.infokosadmin.databinding.ActivityDetailBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityDetailBinding
 import com.projectfarrel.infokosadmin.model.ImageData
 import com.projectfarrel.infokosadmin.view.HomeActivity
-import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDetailBinding
     lateinit private var adapterSlide: ImageSliderAdapter

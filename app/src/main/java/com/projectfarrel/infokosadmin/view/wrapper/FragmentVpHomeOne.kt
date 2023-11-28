@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.FragmentVpHomeOneBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.projectfarrel.infokoscalo.R
+import com.projectfarrel.infokoscalo.databinding.FragmentVpHomeOneBinding
 
-@AndroidEntryPoint
 class FragmentVpHomeOne : Fragment() {
 
     lateinit var binding : FragmentVpHomeOneBinding

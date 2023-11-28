@@ -2,7 +2,8 @@ package com.projectfarrel.infokosadmin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import dagger.hilt.android.AndroidEntryPoint
+import com.projectfarrel.infokoscalo.R
+
 
 
 class MainActivity : AppCompatActivity() {

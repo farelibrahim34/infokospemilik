@@ -1,41 +1,32 @@
 package com.projectfarrel.infokosadmin.network
 
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
+
 object ApiClient {
     const val BASE_URL = "https://641853be29e7e36438e58c8c.mockapi.io/"
+    const val BASE_URL_DUA = "https://65648fa2ceac41c0761e6d31.mockapi.io/"
 
-    private val logging: HttpLoggingInterceptor
-        get() {
-            val httpLoggingInterceptor = HttpLoggingInterceptor()
-            return httpLoggingInterceptor.apply {
-                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            }
-        }
 
-    private val client = OkHttpClient.Builder().addInterceptor(logging).build()
-
-    @Singleton
-    @Provides
-    fun provideRetrofit(): Retrofit =
-        Retrofit.Builder()
+    val instance :ApiInterface by lazy {
+        val retrofit =Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
             .build()
-
-    @Singleton
-    @Provides
-    fun provide(retrofit: Retrofit): ApiInterface =
         retrofit.create(ApiInterface::class.java)
+    }
+    val instanceDua :ApiInterface by lazy {
+        val retrofit =Retrofit.Builder()
+            .baseUrl(BASE_URL_DUA)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        retrofit.create(ApiInterface::class.java)
+    }
+
+
 }

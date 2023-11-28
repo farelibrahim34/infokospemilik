@@ -3,43 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.webkit.PermissionRequest" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.Manifest.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name=".hilt.InfoKosApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/logokost"
-        android:label="Info Kos Calo"
+        android:label="Info Kos"
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoKosAdmin"
         tools:targetApi="31">
         <activity
-            android:name=".view.isi.EditPiActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.AccActivity"
             android:exported="false" />
         <activity
-            android:name=".view.isi.DetailPiActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.NotifActivity"
             android:exported="false" />
         <activity
-            android:name=".view.isi.EditActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.EditPiActivity"
             android:exported="false" />
         <activity
-            android:name=".view.isi.DetailActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.DetailPiActivity"
             android:exported="false" />
         <activity
-            android:name=".view.isi.AddActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.EditActivity"
             android:exported="false" />
         <activity
-            android:name=".view.HomeActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SplashScreenActivity"
+            android:name="com.projectfarrel.infokosadmin.view.isi.AddActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectfarrel.infokosadmin.view.HomeActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name="com.projectfarrel.infokosadmin.view.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,13 +56,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.RegisterActivity"
+            android:name="com.projectfarrel.infokosadmin.view.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.LoginActivity"
+            android:name="com.projectfarrel.infokosadmin.auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.projectfarrel.infokosadmin.MainActivity"
             android:exported="false" />
     </application>
 

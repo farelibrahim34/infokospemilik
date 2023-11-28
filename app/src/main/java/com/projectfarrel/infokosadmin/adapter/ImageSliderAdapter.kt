@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.projectfarrel.infokosadmin.databinding.ItemSlideBinding
+import com.projectfarrel.infokoscalo.databinding.ItemSlideBinding
 import com.projectfarrel.infokosadmin.model.ImageData
 
 class ImageSliderAdapter(private val items : List<ImageData>): RecyclerView.Adapter<ImageSliderAdapter.ImageViewHolder>() {

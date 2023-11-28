@@ -2,18 +2,18 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+
 }
 
 android {
-    namespace 'com.projectfarrel.infokosadmin'
+    namespace 'com.projectfarrel.infokoscalo'
     compileSdk 33
 
     buildFeatures{
         viewBinding true
     }
     defaultConfig {
-        applicationId "com.projectfarrel.infokosadmin"
+        applicationId "com.projectfarrel.infokoscalo"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -69,8 +69,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
 
     testImplementation "io.mockk:mockk:1.13.1"
     //noinspection GradleDependency
@@ -90,6 +89,7 @@ dependencies {
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
 
 
 }

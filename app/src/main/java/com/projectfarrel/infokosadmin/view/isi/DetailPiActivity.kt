@@ -13,16 +13,13 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.projectfarrel.infokosadmin.R
+import com.projectfarrel.infokoscalo.R
 import com.projectfarrel.infokosadmin.adapter.ImageSliderAdapter
-import com.projectfarrel.infokosadmin.databinding.ActivityDetailBinding
-import com.projectfarrel.infokosadmin.databinding.ActivityDetailPiBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityDetailBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityDetailPiBinding
 import com.projectfarrel.infokosadmin.model.ImageData
 import com.projectfarrel.infokosadmin.view.HomeActivity
-import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class DetailPiActivity : AppCompatActivity() {
     lateinit var binding : ActivityDetailPiBinding
     lateinit private var adapterSlide: ImageSliderAdapter

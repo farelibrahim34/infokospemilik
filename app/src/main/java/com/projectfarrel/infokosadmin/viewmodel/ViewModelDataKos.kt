@@ -2,18 +2,22 @@ package com.projectfarrel.infokosadmin.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.common.api.Api
 import com.projectfarrel.infokosadmin.model.DataKos
+import com.projectfarrel.infokosadmin.model.PesanKos
 import com.projectfarrel.infokosadmin.model.ResponseDataKos
 import com.projectfarrel.infokosadmin.model.ResponseDataKosItem
+import com.projectfarrel.infokosadmin.model.ResponsePesanKosItem
+import com.projectfarrel.infokosadmin.network.ApiClient
 import com.projectfarrel.infokosadmin.network.ApiInterface
-import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.sync.Mutex
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-@HiltViewModel
-class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewModel() {
+
+class ViewModelDataKos: ViewModel() {
     lateinit var ldDataKos : MutableLiveData<List<ResponseDataKosItem>>
     lateinit var postLdDataKos : MutableLiveData<ResponseDataKos?>
     lateinit var deleteDataKos : MutableLiveData<ResponseDataKosItem?>
@@ -23,8 +27,13 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     lateinit var postLdDataKosPi :MutableLiveData<ResponseDataKos?>
     lateinit var deleteDataKosPi : MutableLiveData<ResponseDataKosItem?>
     lateinit var editLdDataKosPi :MutableLiveData<ResponseDataKosItem?>
+    lateinit var ldPesanKos: MutableLiveData<List<ResponsePesanKosItem>>
+    lateinit var getIdPesan : MutableLiveData<ResponsePesanKosItem>
+
+    lateinit var updateLdPesan : MutableLiveData<ResponsePesanKosItem?>
 
     init {
+        updateLdPesan= MutableLiveData()
         ldDataKos = MutableLiveData()
         postLdDataKos = MutableLiveData()
         deleteDataKos = MutableLiveData()
@@ -34,8 +43,19 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
         postLdDataKosPi = MutableLiveData()
         deleteDataKosPi = MutableLiveData()
         editLdDataKosPi = MutableLiveData()
-    }
 
+        ldPesanKos = MutableLiveData()
+        getIdPesan = MutableLiveData()
+    }
+    fun updatePesan():MutableLiveData<ResponsePesanKosItem?>{
+        return updateLdPesan
+    }
+    fun getByIdPesan(id:Int):MutableLiveData<ResponsePesanKosItem>{
+        return  getIdPesan
+    }
+    fun getPesanKos():MutableLiveData<List<ResponsePesanKosItem>>{
+        return ldPesanKos
+    }
     fun getDataKos():MutableLiveData<List<ResponseDataKosItem>>{
         return ldDataKos
     }
@@ -62,9 +82,75 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     fun getEditDataKosPi(): MutableLiveData<ResponseDataKosItem?>{
         return editLdDataKosPi
     }
+    fun callUpdatePesan(id : Int,
+                        nama: String,
+                        namaKos: String,
+                        noHp: String,
+                        noKamar: String,
+                        tglpesan: String,
+                        status: String){
+        ApiClient.instanceDua.editPesan(id, PesanKos(nama,namaKos,noHp,tglpesan,noKamar,status))
+            .enqueue(object :Callback<ResponsePesanKosItem>{
+            override fun onResponse(
+                call: Call<ResponsePesanKosItem>,
+                response: Response<ResponsePesanKosItem>
+            ) {
+                if(response.isSuccessful){
+                    updateLdPesan.postValue(response.body())
+                }else{
+                    updateLdPesan.postValue(null)
+                }
+            }
 
+            override fun onFailure(call: Call<ResponsePesanKosItem>, t: Throwable) {
+                updateLdPesan.postValue(null)
+            }
+
+        })
+    }
+
+    fun callGetById(id : Int){
+        ApiClient.instanceDua.getDataByid(id)
+            .enqueue(object:Callback<ResponsePesanKosItem>{
+                override fun onResponse(
+                    call: Call<ResponsePesanKosItem>,
+                    response: Response<ResponsePesanKosItem>
+                ) {
+                    if (response.isSuccessful){
+                        getIdPesan.postValue(response.body())
+                    }else{
+                        getIdPesan.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponsePesanKosItem>, t: Throwable) {
+                    getIdPesan.postValue(null)
+                }
+
+            })
+    }
+    fun callApiPesanKos(){
+        ApiClient.instanceDua.getAllPesanKos()
+            .enqueue(object:Callback<List<ResponsePesanKosItem>>{
+                override fun onResponse(
+                    call: Call<List<ResponsePesanKosItem>>,
+                    response: Response<List<ResponsePesanKosItem>>
+                ) {
+                    if (response.isSuccessful){
+                        ldPesanKos.postValue(response.body())
+                    }else{
+                        ldPesanKos.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<ResponsePesanKosItem>>, t: Throwable) {
+                    ldPesanKos.postValue(null)
+                }
+
+            })
+    }
     fun callApiDataKos(){
-        api.getAllDataKos()
+        ApiClient.instance.getAllDataKos()
             .enqueue(object :Callback<List<ResponseDataKosItem>>{
                 override fun onResponse(
                     call: Call<List<ResponseDataKosItem>>,
@@ -84,7 +170,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
             })
     }
     fun callApiDataKosPi(){
-        api.getAllDataKosPutri()
+        ApiClient.instance.getAllDataKosPutri()
             .enqueue(object  : Callback<List<ResponseDataKosItem>>{
                 override fun onResponse(
                     call: Call<List<ResponseDataKosItem>>,
@@ -114,7 +200,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                         linkMaps: String,
                         rating: String,
                         desc: String){
-        api.addDataKos(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
+        ApiClient.instance.addDataKos(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKos>{
                 override fun onResponse(
                     call: Call<ResponseDataKos>,
@@ -143,7 +229,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                           linkMaps: String,
                           rating: String,
                           desc: String){
-        api.addDataKosPutri(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
+        ApiClient.instance.addDataKosPutri(DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKos>{
                 override fun onResponse(
                     call: Call<ResponseDataKos>,
@@ -165,7 +251,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
     }
 
     fun callDeleteData(id : Int){
-        api.deleteDataKos(id)
+        ApiClient.instance.deleteDataKos(id)
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,
@@ -185,7 +271,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
             })
     }
     fun callDeleteDataPi(id :Int){
-        api.deleteDataKosPutri(id)
+        ApiClient.instance.deleteDataKosPutri(id)
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,
@@ -216,7 +302,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                      linkMaps: String,
                      rating: String,
                      desc: String){
-        api.editDataKos(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
+        ApiClient.instance.editDataKos(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,
@@ -246,7 +332,7 @@ class ViewModelDataKos@Inject constructor(private val api : ApiInterface): ViewM
                        linkMaps: String,
                        rating: String,
                        desc: String){
-        api.editDataKosPutri(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
+        ApiClient.instance.editDataKosPutri(id,DataKos(alamat,fotoDua,fotoKos,fotoSatu,fotoTiga,namaKos,noHp,linkMaps,rating,desc))
             .enqueue(object : Callback<ResponseDataKosItem>{
                 override fun onResponse(
                     call: Call<ResponseDataKosItem>,

@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.ActivityEditBinding
-import com.projectfarrel.infokosadmin.databinding.ActivityEditPiBinding
+import com.projectfarrel.infokoscalo.R
+import com.projectfarrel.infokoscalo.databinding.ActivityEditBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityEditPiBinding
 import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
-import dagger.hilt.android.AndroidEntryPoint
+
 import kotlin.properties.Delegates
 
-@AndroidEntryPoint
 class EditPiActivity : AppCompatActivity() {
     lateinit var binding : ActivityEditPiBinding
     var id by Delegates.notNull<Int>()

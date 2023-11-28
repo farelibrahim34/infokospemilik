@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.ActivityDetailBinding
-import com.projectfarrel.infokosadmin.databinding.ActivityEditBinding
+import com.projectfarrel.infokoscalo.R
+import com.projectfarrel.infokoscalo.databinding.ActivityDetailBinding
+import com.projectfarrel.infokoscalo.databinding.ActivityEditBinding
 import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
-import dagger.hilt.android.AndroidEntryPoint
+
 import kotlin.properties.Delegates
 
-@AndroidEntryPoint
 class EditActivity : AppCompatActivity() {
     lateinit var binding : ActivityEditBinding
     var id by Delegates.notNull<Int>()
@@ -77,7 +76,6 @@ class EditActivity : AppCompatActivity() {
             if (it != null){
                 Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
-                Toast.makeText(this, "Data Berhasil Di Edit", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }
         }

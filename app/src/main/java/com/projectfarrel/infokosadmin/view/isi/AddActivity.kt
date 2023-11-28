@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.projectfarrel.infokosadmin.R
-import com.projectfarrel.infokosadmin.databinding.ActivityAddBinding
+import com.projectfarrel.infokoscalo.R
+import com.projectfarrel.infokoscalo.databinding.ActivityAddBinding
 import com.projectfarrel.infokosadmin.view.HomeActivity
 import com.projectfarrel.infokosadmin.viewmodel.ViewModelDataKos
-import dagger.hilt.android.AndroidEntryPoint
+import com.projectfarrel.infokosadmin.viewmodel.ViewModelPesan
 
-@AndroidEntryPoint
 class AddActivity : AppCompatActivity() {
     lateinit var binding : ActivityAddBinding
 
@@ -56,6 +55,21 @@ class AddActivity : AppCompatActivity() {
 
 
 
+    }
+    fun postPesan(nama: String,
+                  namaKos: String,
+                  noHp: String,
+                  noKamar: String,
+                  tglpesan: String,
+                  status: String){
+        val viewModel = ViewModelProvider(this).get(ViewModelPesan::class.java)
+        viewModel.callPostPesanKos(nama,namaKos,noHp,noKamar,tglpesan,status)
+        viewModel.postPesanKos().observe(this,{
+            if (it != null){
+                Toast.makeText(this,"add data sukses", Toast.LENGTH_SHORT).show()
+            }
+        })
+        finish()
     }
 
     fun addData(alamat: String,

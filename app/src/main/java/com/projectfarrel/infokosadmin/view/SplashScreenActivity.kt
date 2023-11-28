@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.lifecycle.asLiveData
 import com.projectfarrel.infokosadmin.MainActivity
-import com.projectfarrel.infokosadmin.R
+import com.projectfarrel.infokoscalo.R
 import com.projectfarrel.infokosadmin.auth.LoginActivity
-import com.projectfarrel.infokosadmin.databinding.ActivitySplashScreenBinding
+import com.projectfarrel.infokoscalo.databinding.ActivitySplashScreenBinding
 import com.projectfarrel.infokosadmin.datastore.DataStoreLogin
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -38,7 +38,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //
 //        },7000)
         Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         },7000)
     }

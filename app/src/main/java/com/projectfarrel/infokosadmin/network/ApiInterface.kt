@@ -37,4 +37,13 @@ interface ApiInterface {
     @PUT("datakosPutri/{id}")
     fun editDataKosPutri(@Path("id") id: Int, @Body request : DataKos): Call<ResponseDataKosItem>
 
+    @GET("pesanKos")
+    fun getAllPesanKos(): Call<List<ResponsePesanKosItem>>
+    @GET("pesanKos/{id}")
+    fun getDataByid(@Path("id") id : Int): Call<ResponsePesanKosItem>
+    @POST("pesanKos")
+    fun addPesan(@Body request : PesanKos) :Call<ResponsePesanKos>
+    @PUT("pesanKos/{id}")
+    fun editPesan(@Path("id") id: Int,@Body request : PesanKos): Call<ResponsePesanKosItem>
+
 }
